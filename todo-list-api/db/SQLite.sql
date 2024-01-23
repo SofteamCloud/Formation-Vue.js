@@ -1,0 +1,3 @@
+DROP TABLE if EXISTS TODOS;
+
+CREATE TABLE TODOS (ID TEXT primary key, todo TEXT NOT NULL, created_at TEXT);
