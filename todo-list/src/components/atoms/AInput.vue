@@ -1,16 +1,20 @@
 <template>
   <div>
-    <label for="text" class="input-label">
-      Ajouter une nouvelle tâche
-    </label>
-    <input type="text" id="text" class="input" @input="$emit('update:value', $event.target.value)"
-      placeholder="Lorem ipsum no..." :value="value" required>
+    <label :for="id" class="input-label">{{ title }}</label>
+    <input type="text" :id="id" class="input" @input="$emit('update:value', $event.target.value)"
+      placeholder="Lorem ipsum no..." :value="value" required lazy>
   </div>
 </template>
 
 <script setup>
 defineProps({
-  value: String
+  id: String,
+  title: String,
+  value: String,
+  placeholder: {
+    type: String,
+    default: 'Lorem ipsum no...'
+  }
 })
 
 defineEmits(['update:value'])
