@@ -1,19 +1,28 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter, useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n';
 import useCartStore from '@/stores/cart'
+import getPathLang from '@/helpers/locale';
 
+const locale = getPathLang(window.location.pathname)
+const { push } = useRouter();
 const cartStore = useCartStore()
 const { getProductsNumber } = storeToRefs(cartStore)
+const updateLocale = () => {
+  if (locale === 'fr') {
+    window.location.href = '/en' + window.location.pathname
+  } else {
+    window.location.href = window.location.pathname.replace('/en', '')
+  }
+}
 </script>
 
 <template>
   <nav class="navbar">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <RouterLink class="flex items-center space-x-3 rtl:space-x-reverse" to="/">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-          >Ecom</span
-        >
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Ecom</span>
       </RouterLink>
 
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
@@ -28,6 +37,11 @@ const { getProductsNumber } = storeToRefs(cartStore)
             </RouterLink>
           </li>
         </ul>
+      </div>
+
+      <div>
+        <button v-if="locale === 'en'" @click="updateLocale">Fr</button>
+        <button v-else @click="updateLocale">En</button>
       </div>
     </div>
   </nav>

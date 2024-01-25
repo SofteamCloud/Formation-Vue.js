@@ -9,12 +9,7 @@ const { getProducts } = storeToRefs(productStore)
 
 <template>
   <div class="grid gap-4 grid-cols-3 p-5">
-    <ProductCard
-      class="flex-1"
-      v-for="product in getProducts"
-      :ref="product.title"
-      :product="product"
-      @to-product="$router.push('/product/' + product.id)"
-    />
+    <ProductCard class="flex-1" v-for="product in getProducts" :ref="product.title" :product="product"
+      @to-product="$router.push('/product/' + product.id)" />
   </div>
 </template>

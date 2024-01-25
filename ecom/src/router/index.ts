@@ -7,7 +7,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      alias: '/en'
     },
     {
       path: '/cart',
@@ -17,6 +18,16 @@ const router = createRouter({
     {
       path: '/product/:id',
       name: 'product',
+      component: () => import('../views/ProductView.vue')
+    },
+    {
+      path: '/en/cart',
+      name: 'cart-en',
+      component: () => import('../views/CartView.vue')
+    },
+    {
+      path: '/en/product/:id',
+      name: 'product-en',
       component: () => import('../views/ProductView.vue')
     }
   ]

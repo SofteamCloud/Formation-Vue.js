@@ -1,4 +1,5 @@
 export const APISettings = {
+  token: '',
   headers: {
     "Content-Type": "application/json",
   },

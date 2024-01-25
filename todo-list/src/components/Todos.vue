@@ -69,7 +69,7 @@ const findTodoItems = async (value) => {
   }
 }
 
-const onUpdateSearch = debounce((value) => findTodoItems(value), 500)
+const onUpdateSearch = (value) => findTodoItems(value)//debounce((value) => findTodoItems(value), 500)
 </script>
 
 <style>
